@@ -66,7 +66,7 @@ service nginx reload
 fi
 
 # if the action is to delete a domain, we need to remove the vhost or the alias
-elif    [[ "$VIRTUALSERVER_ACTION" = "DELETE_DOMAIN"  ]]; then
+elif [[ "$VIRTUALSERVER_ACTION" = "DELETE_DOMAIN" ]] || [[ "$VIRTUALSERVER_ACTION" = "MODIFY_DOMAIN" && "$VIRTUALSERVER_WEB" = "0" ]] || [ "$VIRTUALSERVER_ACTION" = "DISABLE_DOMAIN" ]; then
 
 if [ -n "$VIRTUALSERVER_ALIAS" ]; then
         sed -i "/^server_name "$VIRTUALSERVER_DOM" www."$VIRTUALSERVER_DOM";/d" /etc/nginx/vhosts/"$ALIAS_VIRTUALSERVER_DOM".aliases
