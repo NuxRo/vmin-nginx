@@ -2,6 +2,21 @@
 
 # https://virtualmin.com/node/45023
 
+## uncomment to START DEBUG
+#exec 3>&1 4>&2
+#trap 'exec 2>&4 1>&3' 0 1 2 3
+#exec 1>>/var/log/vmin-nginx.log 2>&1
+#
+#echo "
+#
+#
+#" >> /var/log/vmin-nginx.log
+#
+#set -o posix ; set
+#
+## END DEBUG
+
+
 # if the action is positive (ie not deletion); then we need to do virtualhost stuff
 
 if [[ "$VIRTUALSERVER_ACTION" = "MODIFY_DOMAIN" || "$VIRTUALSERVER_ACTION" = "CREATE_DOMAIN" || "$VIRTUALSERVER_ACTION" = "RESTORE_DOMAIN" ]]; then
@@ -9,7 +24,7 @@ if [[ "$VIRTUALSERVER_ACTION" = "MODIFY_DOMAIN" || "$VIRTUALSERVER_ACTION" = "CR
 # if it's just an alias, we simply add it to a separate aliases file we include in the main vhost
 if [ -n "$VIRTUALSERVER_ALIAS" ]; then
 echo "server_name $VIRTUALSERVER_DOM www.$VIRTUALSERVER_DOM;" >> /etc/nginx/vhosts/"$ALIAS_VIRTUALSERVER_DOM".aliases
-service nginx reload
+nginx -qt && service nginx reload || exit 0
 
 else
 
@@ -60,7 +75,7 @@ echo "
 
 echo "}" >> /etc/nginx/vhosts/$VIRTUALSERVER_DOM.conf
 # END VHOST
-service nginx reload
+nginx -qt && service nginx reload || exit 0
 fi
 
 # if the action is to delete a domain, we need to remove the vhost or the alias
@@ -68,9 +83,9 @@ elif [[ "$VIRTUALSERVER_ACTION" = "DELETE_DOMAIN" ]] || [[ "$VIRTUALSERVER_ACTIO
 
 if [ -n "$VIRTUALSERVER_ALIAS" ]; then
         sed -i "/^server_name "$VIRTUALSERVER_DOM" www."$VIRTUALSERVER_DOM";/d" /etc/nginx/vhosts/"$ALIAS_VIRTUALSERVER_DOM".aliases
-        service nginx reload
+        nginx -qt && service nginx reload || exit 0
 else
         rm -fv /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".conf /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".aliases
-        service nginx reload
+        nginx -qt && service nginx reload || exit 0
 fi
 fi
