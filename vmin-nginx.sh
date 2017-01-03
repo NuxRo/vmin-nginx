@@ -2,8 +2,6 @@
 
 # https://virtualmin.com/node/45023
 
-#!/bin/bash
-
 # if the action is positive (ie not deletion); then we need to do virtualhost stuff
 
 if [[ "$VIRTUALSERVER_ACTION" = "MODIFY_DOMAIN" || "$VIRTUALSERVER_ACTION" = "CREATE_DOMAIN" || "$VIRTUALSERVER_ACTION" = "RESTORE_DOMAIN" ]]; then
