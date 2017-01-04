@@ -8,5 +8,5 @@ Steps involved:
 - Set Virtualmin to run this script as Pre/Post command: /usr/local/bin/vmin-nginx.sh
 - Download the script:
 
-`wget https://raw.githubusercontent.com/NuxRo/vmin-nginx/master/vmin-nginx.sh -O /usr/local/bin/vmin-nginx.sh
-chmod +x /usr/local/bin/vmin-nginx.sh`
+`wget https://raw.githubusercontent.com/NuxRo/vmin-nginx/master/vmin-nginx.sh -O /usr/local/bin/vmin-nginx.sh`
+`chmod +x /usr/local/bin/vmin-nginx.sh`
