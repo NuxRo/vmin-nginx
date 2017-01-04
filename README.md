@@ -9,4 +9,5 @@ Steps involved:
 - Download the script:
 
 `wget https://raw.githubusercontent.com/NuxRo/vmin-nginx/master/vmin-nginx.sh -O /usr/local/bin/vmin-nginx.sh`
+
 `chmod +x /usr/local/bin/vmin-nginx.sh`
