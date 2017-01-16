@@ -17,10 +17,14 @@ HOW TO (tested on CentOS 7)
 `service httpd restart`
 
 - Install Nginx and set it to include .conf files from /etc/nginx/vhosts/*.conf (and create that dir)
-`mkdir /etc/nginx/vhosts
-echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/default.d/vmin-nginx.conf
-service nginx start
-systemctl enable nginx`
+
+`mkdir /etc/nginx/vhosts`
+
+`echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/default.d/vmin-nginx.conf`
+
+`service nginx start`
+
+`systemctl enable nginx`
 
 
 - Set Virtualmin to run this script as Pre/Post command: /usr/local/bin/vmin-nginx.sh
