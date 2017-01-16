@@ -28,6 +28,7 @@ HOW TO (tested on CentOS 7)
 
 
 - Set Virtualmin to run this script as Pre/Post command: /usr/local/bin/vmin-nginx.sh
+![Screenshot3](http://img.nux.ro/J9b-Selection_190.png)
 
 
 - Download the script and make it executable:
