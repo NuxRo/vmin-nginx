@@ -2,10 +2,11 @@
 
 Fronting Virtualmin's Apache with Nginx automatically.
 
-HOW TO (Assuming you start from scratch, tested on CentOS 7)
+HOW TO (tested on CentOS 7)
 - Install Virtualmin as usual
-- Set Apache to listen on ports 1080 for HTTP and 1443 for HTTPS and apply the configuration, do this from the Virtualmin/Webmin interface so the control panel is aware of the change, make sure to apply the configuration afterwards.
-![Webmin Screenshot] (http://img.nux.ro/kJ9-Selection_188.png)
+- Set Apache to listen on ports 1080 for HTTP and 1443 for HTTPS and apply the configuration, do this from Virtualmin > System Settings > Server Templates > Apache Website > Port number for virtual and SSL hosts. You may need to edit the configuration of your existing vhosts and change the port accordingly.
+![Screenshot1] (http://img.nux.ro/kJ9-Selection_188.png)
+![Screenshot2] (http://img.nux.ro/3Tq-Selection_189.png)
 
 
 - Install Nginx and set it to include .conf files from /etc/nginx/vhosts/*.conf (and create that dir)
