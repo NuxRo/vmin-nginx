@@ -33,11 +33,15 @@ else
 # prepare aliases file for any eventual aliases
 touch /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".aliases
 
+# and a file for custom configuration
+touch /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".custom
+
 # actual vhost config
 echo "
 server {
         server_name $VIRTUALSERVER_DOM www.$VIRTUALSERVER_DOM;
         include /etc/nginx/vhosts/$VIRTUALSERVER_DOM.aliases;
+        include /etc/nginx/vhosts/$VIRTUALSERVER_DOM.custom;
         listen  $VIRTUALSERVER_IP;
         root $VIRTUALSERVER_PUBLIC_HTML_PATH;
         access_log /var/log/virtualmin/"$VIRTUALSERVER_DOM"_nginx_access_log;
@@ -85,7 +89,7 @@ if [ -n "$VIRTUALSERVER_ALIAS" ]; then
         sed -i "/^server_name "$VIRTUALSERVER_DOM" www."$VIRTUALSERVER_DOM";/d" /etc/nginx/vhosts/"$ALIAS_VIRTUALSERVER_DOM".aliases
         nginx -qt && service nginx reload || exit 0
 else
-        rm -fv /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".conf /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".aliases
+        rm -fv /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".conf /etc/nginx/vhosts/"$VIRTUALSERVER_DOM".aliases /etc/nginx/vhosts/"$ALIAS_VIRTUALSERVER_DOM".custom
         nginx -qt && service nginx reload || exit 0
 fi
 fi
