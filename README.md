@@ -20,7 +20,7 @@ HOW TO (tested on CentOS 7)
 
 `mkdir /etc/nginx/vhosts`
 
-`echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/default.d/vmin-nginx.conf`
+`echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/conf.d/vmin-nginx.conf`
 
 `service nginx start`
 
