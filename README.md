@@ -22,7 +22,7 @@ HOW TO (tested on CentOS 7)
 
 `echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/conf.d/vmin-nginx.conf`
 
-`service nginx start`
+`service nginx restart`
 
 `systemctl enable nginx`
 
