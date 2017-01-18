@@ -8,11 +8,14 @@ HOW TO (tested on CentOS 7)
 - Tell Virtualmin to use Apache ports 1080 for HTTP and 1443 for HTTPS in vhosts, do this from Virtualmin > System Settings > Server Templates > Apache Website > Port number for virtual and SSL hosts.
 ![Screenshot2] (http://img.nux.ro/3Tq-Selection_189.png)
 
-- You may need to edit your existing configuration and change the port accordingly
+- You may need to edit your existing configuration and change the ports accordingly, in the main config
 
-`sed -i.bak80 s/:80/:1080/g /etc/httpd/conf/httpd.conf`
+![Screenshot3] (http://img.nux.ro/7Cs-Selection_188.png)
 
-`sed -i.bak443 s/:443/:1443/g /etc/httpd/conf/httpd.conf /etc/httpd/conf.d/ssl.conf`
+as well as per vhost (or virtualserver)
+
+![Screenshot4](http://img.nux.ro/Kr3-Selection_194.png)
+
 
 `service httpd restart`
 
