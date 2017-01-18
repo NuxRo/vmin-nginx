@@ -16,11 +16,12 @@ HOW TO (tested on CentOS 7)
 
 `service httpd restart`
 
-- Install Nginx and set it to include .conf files from /etc/nginx/vhosts/*.conf (and create that dir)
+- Install Nginx and set it to include .conf files from /etc/nginx/vhosts/*.conf (and create that dir); it also needs to run as user/group Apache
 
 `mkdir /etc/nginx/vhosts`
 
 `echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/conf.d/vmin-nginx.conf`
+`sed -i s/"user nginx;"/"user apache apache;"/g /etc/nginx/nginx.conf`
 
 `service nginx restart`
 
