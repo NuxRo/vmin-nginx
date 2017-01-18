@@ -24,6 +24,7 @@ as well as per vhost (or virtualserver)
 `mkdir /etc/nginx/vhosts`
 
 `echo "include /etc/nginx/vhosts/*.conf;" > /etc/nginx/conf.d/vmin-nginx.conf`
+
 `sed -i s/"user nginx;"/"user apache apache;"/g /etc/nginx/nginx.conf`
 
 `service nginx restart`
